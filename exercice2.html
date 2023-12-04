@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Debilidad</title>
+
+<style>
+
+    h2 {
+        color:#2F4F4F; 
+        text-align:center;
+        font-family: Arial;
+        font-size: 40px;
+    }
+
+    p {
+        color: #696969;
+        text-align:center;
+        font-family: Arial;
+        font-size: 16px;
+    }
+
+    body{
+        background-color: #E2E7E2; 
+        margin-left: 50px;
+        margin-right: 50px;
+        padding: 10px;
+    }
+
+
+    .button {
+        color: black;
+        padding: 40px 120px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 6px 2px;
+        cursor: pointer;
+        align-content: center;
+        border-radius: 8px;
+    }
+
+    .botonera {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    }
+
+    .cprincipal {background-color: #6CE17D;} /* verde */ 
+    .cgris {
+        background-color: #B5C8B8;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .box {
+        border: 4px solid #96AC96;
+        background-color: white;
+        padding: 40px;
+        width: 700px;
+        margin:auto;
+    }
+
+</style>
+</head>
+
+
+<body>
+    <h2>Contador de Clics de Ratón</h2>
+
+    <p>En este ejercicio, se contaran los clicks realizados en 30 segundos para registrar si hay debilidad muscular.</p>
+
+    <div class="box">
+
+    <p style="text-align: center;">
+      <button class="button cgris" id ="startButton" onclick="empiezaEjercicio()">Empezar</button> <br> <br> <br> 
+      <!-- el boton empieza estando apagado, se enciende cuando se hace onclick del otro -->
+      <br> <br> <br> <button class="button cprincipal" id="principal" onclick="registraBoton()" disabled/>Haga click aquí</button> <br> <br> <br> 
+
+        Número de clicks:
+        <p id="contador">0</p>
+    </p>
+
+    </div>
+
+    <div class="botonera">
+        <button class="button cgris" id="volver"> <a href="C:\Users\letib\OneDrive\Bureau\cuarto\primer cuatri\proyectosIII\exercices\initial.html">Volver al inicio</button></a>
+        <button class="button cgris" id="descarga" onclick="descargaInfo()" disabled/>Descargar datos</button>
+    </div>
+
+    <script>
+        // En cuanto se active el boton empezar, se empezara el ejercicio
+        let contador = 0;
+
+
+        function init(){
+            let download = document.getElementById('download');
+            download.addEventListener('click', downloadFile);
+        }
+
+        function descargaInfo(){
+            let text = "El usuario ha pulsado el boton " + contador + " veces en 30 segundos";            
+            console.log(text);
+            const a = document.createElement('a');
+            const file = new Blob([text], {type: 'text/plain'});
+            a.href = URL.createObjectURL(file);
+            a.download = 'dataFromDebilidad.txt';
+            a.click();
+            URL.revokeObjectURL(a.href); 
+            document.getElementById("startButton").disabled = false;
+        };
+
+
+        
+        function empiezaEjercicio(){
+            contador = 0;
+            // inicializa el boton principal para empezar el ejercicio
+            document.getElementById("principal").disabled = false;
+            // activa el temporizador
+            acaba();
+            // apagamos el boton empezar
+            document.getElementById("startButton").disabled = true;
+            // y apagamos el de descargar
+            document.getElementById("descarga").disabled = true;
+        }
+
+        // las funciones que registran el ejercico
+        function registraBoton(){
+            document.addEventListener("click", actualizarContador());
+        }
+
+        // tengo que guardar la info en le fichero para poder reiniciar el contador
+        // se reinicia en el timepo
+        function actualizarContador() {
+            contador++;
+            document.getElementById("contador").textContent = contador;
+            console.log("se hace la funcion actualizarContador");
+        }
+
+        // Establece un temporizador para detener la cuenta después de medio minuto (30,000 ms)
+        function acaba(){
+             setTimeout(function() {
+                // apaga el boton principal
+                document.getElementById("principal").disabled = true;
+                // se enciende el boton de guardar ejercicio
+                document.getElementById("descarga").disabled = false;
+                // encendemos para otra repeticion el boton inicio
+                //document.getElementById("startButton").disabled = false;
+                // se reinicia pero una vez que empezamos a darle a los botones
+                
+                alert("Se ha detenido la cuenta después de 30 segundos.");
+            }, 30000);
+        }
+        
+    </script>
+</body>
+</html>

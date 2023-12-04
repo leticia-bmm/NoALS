@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Calambres</title>
+<!-- esto es obligatorio ponerlo en todos los canvas --> 
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+
+<style>
+    h1 {
+        font-family: verdana;
+    }
+    h2 {
+        color:#2F4F4F; 
+        text-align:center;
+        font-family: Arial;
+        font-size: 40px;
+
+    }
+    p {
+        color: #696969;
+        text-align:center;
+        font-family: Arial;
+        font-size: 16px;
+    }
+    body{
+        background-color: #E2E7E2; 
+        margin-left: 50px;
+        margin-right: 50px;
+        padding: 10px;
+    }
+    .button {
+        color: white;
+        padding: 40px 120px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 6px 2px;
+        cursor: pointer;
+        align-content: center;
+        border-radius: 8px;
+    }
+    .cgris {
+        background-color: #B5C8B8;
+        padding: 10px 20px;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+    canvas {
+        border: 1px solid #E2E7E2;
+        margin: 3px;
+    }
+    
+    .box {
+        border: 4px solid #96AC96;
+        background-color: white;
+        padding: 40px;
+        width: 700px;
+        margin:auto;
+    }
+
+
+</style>
+
+<script src='canvas_ejercicio3.js' defer></script>
+
+</head>
+
+
+
+<body>
+
+    <h2>Dibujar formas</h2>
+    <p>
+        En este ejercicio se le pide que siga la linea de puntos dentro de el marco. 
+        <br>Esto nos permite registrar el movimiento que sigue y si hay existencia de calambres o no.
+    </p>
+
+    <div class="box">
+    <p>
+        <canvas id="canvas" width="600" height="350"></canvas>
+    </p>
+
+    <p>
+        <input type="button" class="cgris" id="download" value="Descargar imagen">
+        <input type="button" class="cgris" id="clear" value="Limpiar">
+    </p>
+    </div>
+    <p style="text-align: right;">
+        <button class="button cgris" id="volver"> <a href="C:\Users\letib\OneDrive\Bureau\cuarto\primer cuatri\proyectosIII\exercices\initial.html">Volver al inicio</button></a>
+    </p>
+    
+</body>
+
+</html>

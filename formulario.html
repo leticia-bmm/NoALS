@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Formulario</title>
+	<style>
+
+	body{
+		background-color: #B4C7B4;
+	}
+	
+	h1 {font-family: verdana;
+		text-align:center;}
+	h2 {color:#2F4F4F;
+		text-align:left;}
+
+	p {
+		text-align: center;
+		font-family: verdana;
+		color: #696969;
+	}
+
+	legend{
+		font-family: verdana;
+		 font-size: 16px;
+	}
+
+	fieldset {
+		padding: 10px 15px;
+		background-color: white;
+		width: 500px;
+  		margin:auto;
+
+	}
+
+	.button {
+		color: black;
+		background-color: #B5C8B8;
+		padding: 10px 20px;
+		font-size: 14px;
+		text-align: right;
+		text-decoration: none;
+		display: inline-block;
+		margin: 6px 2px;
+		cursor: pointer;
+		align-content: center;
+		border-radius: 8px;
+	}
+
+	.botonera {
+	    display: flex;
+	    justify-content: space-between;
+	    width: 100%;
+    }
+
+	</style>
+</head>
+
+
+<body>
+	<h1> 
+	<a href="https://salud.nih.gov/recursos-de-salud/nih-noticias-de-salud/todo-sobre-la-ela">
+		<img title="ELA" src="https://d51h1y0hva8v.cloudfront.net/images/default-source/art%C3%ADculos/ela.png?sfvrsn=d1679adf_2" alt="ELA" style="float:right;width:178px;height:151px;">
+	</a>
+	Formulario para diagnóstico de ELA</h1>
+
+	<form id="formulario">
+		<fieldset>
+	<fieldset style="display: inline-grid">
+	<label for="NdeNyA">Nombre: </label>
+	<input type="text" id="NdeNyA" name="nombre" required><br>
+	<label for="AdeNyA">Apellidos: </label>
+	<input type="text" id="AdeNyA" name="apellidos" required>
+	</fieldset>
+	<br>
+	<br>
+	<fieldset>
+		<legend>Fecha de nacimiento: </legend><br>
+	<input type="date" name="fecha" required>
+	<br>
+	</fieldset>
+	<br>
+	<br>
+	<fieldset>
+		<legend>Sexo: </legend>
+	<input type="radio" id="hombre" name="sexo" value="Hombre">
+	<label for="hombre">Hombre</label><br>
+	<input type="radio" id="mujer" name="sexo" value="Mujer">
+	<label for="mujer">Mujer</label>
+	</fieldset>
+	<br>
+	<br>
+	<fieldset>
+		<legend style="font-family: verdana; font-size: 16px;">¿Ha tenido usted alguno de estos sintomas ultimamente?</legend>
+	<input type="checkbox" id="sint1" name="sintomas" value="Dificultad para caminar o hacer las actividades diarias habituales">
+	<label for="sint1">Dificultad para caminar o hacer las actividades diarias habituales</label><br>
+	<input type="checkbox" id="sint2" name="sintomas" value="Tropezones y caídas">
+	<label for="sint2">Tropezones y caídas</label><br>
+	<input type="checkbox" id="sint3" name="sintomas" value="Debilidad en las piernas, los pies o los tobillos">
+	<label for="sint3">Debilidad en las piernas, los pies o los tobillos</label><br>
+	<input type="checkbox" id="sint4" name="sintomas" value="Debilidad o torpeza en las manos">
+	<label for="sint4">Debilidad o torpeza en las manos</label><br>
+	<input type="checkbox" id="sint5" name="sintomas" value="Dificultad para hablar o problemas para tragar">
+	<label for="sint5">Dificultad para hablar o problemas para tragar</label><br>
+	<input type="checkbox" id="sint6" name="sintomas" value="Debilidad asociada a calambres musculares y espasmos en brazos, hombros y lengua.">
+	<label for="sint6">Debilidad asociada a calambres musculares y espasmos en brazos, hombros y lengua.</label><br>
+	<input type="checkbox" id="sint7" name="sintomas" value="Llanto, risa o bostezos intempestivos.">
+	<label for="sint7">Llanto, risa o bostezos intempestivos.</label><br>
+	<input type="checkbox" id="sint8" name="sintomas" value="Cambios en el pensamiento o comportamiento">
+	<label for="sint8">Cambios en el pensamiento o comportamiento</label><br>
+	<label for="otrosint">Otros: </label><br>
+	<input type="text" id="otrosint" name="otrosintomas"><br>
+	</fieldset>
+	<br>
+	<br>
+	<fieldset>
+		<legend>Marque la o las que más se asemejen a usted:</legend>
+	<input type="checkbox" id="causa1" name="causa" value="Fuma">
+	<label for="causa1">¿Fuma o ha fumado usted?</label><br>
+	<input type="checkbox" id="causa2" name="causa" value="Obesidad">
+	<label for="causa2">¿Padece usted o ha padecido obesidad?</label><br>
+	<input type="checkbox" id="causa3" name="causa" value="Familiar con ELA">
+	<label for="causa3">¿Algun familiar a padecido o padece de ela?</label><br>
+	<input type="checkbox" id="causa4" name="causa" value="Ha participado en la mili">
+	<label for="causa4">¿Ha participado usted en la mili?</label><br>
+	</fieldset>
+	<br>
+	<p style="text-align: center;">
+	<input type="submit" class="button" id="download" value="Enviar">
+	<input type="reset" class="button" value="Borrar">
+	</p>
+	<br>
+	</fieldset>
+	</form>
+
+	<br><br>
+	
+
+	<p style="text-align: right;">
+	<button class="button" style="background-color: white;">
+	<a href="C:\Users\letib\OneDrive\Bureau\cuarto\primer cuatri\proyectosIII\exercices\initial.html">
+	Volver a la pagina principal</button></a>
+	</p>
+
+	<script type="text/javascript">
+		//iniciamos la descarga abriendo un documento
+	window.addEventListener('load', (event) => {
+		init();
+	});
+		//cuando se haga click en enviar que es un boton, se lanza la descarga
+	function init(){
+		let download = document.getElementById('formulario');
+		download.addEventListener('submit', downloadFile);
+	}
+
+	function downloadFile(e) {
+  	// nombre y apellidos		
+	let text = " Nombre y apellidos: " + document.querySelector('input[name="nombre"]').value;
+	text += " " + document.querySelector('input[name="apellidos"]').value + "\n";
+
+	text += "\n Fecha de nacimiento: " + document.querySelector('input[name="fecha"]').value + "\n";
+
+	text += "\n Sexo: " + document.querySelector('input[name="sexo"]:checked').value + "\n";
+	let sintomas = document.querySelectorAll('input[name="sintomas"]:checked');
+	text += "\n El paciente presenta los siguientes sintomas: ";
+			for (i = 0; i < sintomas.length; i++) {
+				text += "\n  - " + sintomas[i].value;
+			} 
+			text += "\n  - " + document.querySelector('input[name="otrosintomas"]').value + "\n";
+
+	let causas = document.querySelectorAll('input[name="causa"]:checked');
+	text += "\n\n El paciente presenta los siguientes antecedentes: ";
+			for (j = 0; j < causas.length; j++) {
+				text += "\n  - " + causas[j].value;
+			} 
+
+			
+	
+	e.preventDefault();
+	const a = document.createElement('a');
+	const file = new Blob([text], {type: 'text/plain'});
+	a.href = URL.createObjectURL(file);
+	a.download = 'data.txt';
+	a.click();
+	URL.revokeObjectURL(a.href); 
+	};
+	</script>
+
+
+
+</body>
+</html>

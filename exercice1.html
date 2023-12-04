@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Reaccion</title>
+
+<style>
+
+  body{
+    background-color: #E2E7E2; 
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 10px;
+  }
+
+  .button {
+    color: white;
+    padding: 40px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 6px 2px;
+    cursor: pointer;
+    align-content: center;
+    border-radius: 8px;
+  }
+
+  .botonera {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  }
+
+  .cverde {background-color: #4CAF50;} 
+  .cazul {background-color: #008CBA;} 
+  .crojo {background-color: #f44336;} 
+  .cnegro {background-color: #555555;} 
+  .cgris {
+    background-color: #B5C8B8;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  h2 {
+    color:#2F4F4F; 
+    text-align:center;
+    font-family: Arial;
+    font-size: 40px;
+
+  }
+  p {
+    color: #696969;
+    text-align:center;
+    font-family: Arial;
+    font-size: 16px;
+  }
+
+
+  .box {
+    border: 4px solid #96AC96;
+    background-color: white;
+    padding: 40px;
+    width: 700px;
+    margin:auto;
+  }
+
+
+</style>
+</head>
+
+
+
+
+<body>
+
+<h2>Ejercicio de los colores: </h2>
+<p>
+  En este ejercicio, se le pide observar el color que ve en el botón superior. <br> 
+  En cuanto lo vea, siendo lo más rápido posible, debrá escoger entre los botones inferiores el color correspondiente. <br>
+  El ejercicio se repetira 5 veces, en cuanto pulse uno de los botones inferiores, debera volver a pulsar el boton principal para continuar con el ejercicio.<br> 
+  Para iniciar el ejercicio, debe darle al boton principal.<br> 
+  <br> 
+</p>
+
+<div class="box">
+
+<p>
+  <button class="button" id="button_main" onclick="todasFunciones()"></button>
+</p>
+
+<p>
+  <br> <br> <br> 
+<button class="button cverde" id="verde" disabled/>verde</button>
+<button class="button cazul" id="azul" disabled/>azul</button>
+<button class="button crojo" id="rojo" disabled/>rojo</button>
+<button class="button cnegro" id="negro" disabled/>negro</button>
+</p>
+
+</div>
+
+<div class="botonera">
+  <button class="button cgris" id="volver"> <a href="C:\Users\letib\OneDrive\Bureau\cuarto\primer cuatri\proyectosIII\exercices\initial.html">Volver al inicio</button></a>
+  <button class="button cgris" id="descarga" onclick="descargaInfo()" disabled/>Descargar datos</button>
+</div>
+
+<script> 
+
+  let variableTiempo = "";
+  let vueltas = 0;
+  let timeInit; 
+  //desactiva el boton para no entrar en un bucle de apretar botones
+  var butVar = document.getElementById("button_main");
+  var butDescarga = document.getElementById("descarga");
+
+  // si lo hago con la de click de event lister, registra culaquier click de la pantalla 
+  function todasFunciones(){
+    colorChange();
+    butVar.disabled = true;
+    enciendeBotones();
+    vueltas++;
+  }
+
+  //cambia el color de el boton
+  function colorChange(){
+    var oldColor = butVar.classList[1];
+    var newColor = randomColor();
+
+    // evitamos que se nos repitan los colores 
+    while (newColor == oldColor){
+      newColor = randomColor();
+    }
+
+    butVar.classList.remove(oldColor);
+    butVar.classList.add(newColor);
+    timeInit = Date.now();
+  }
+
+
+  // mi funcion que cambia los colores
+  function randomColor(){
+    var colorNum = Math.floor((Math.random() * 4) + 1);
+    var stringColor;
+
+    switch (colorNum){
+      case 1: stringColor = "cverde";
+        break;
+      case 2: stringColor = "cazul";
+        break;
+      case 3: stringColor = "crojo";
+        break;
+      case 4: stringColor = "cnegro";
+        break;
+    }
+    console.log("new color is " + stringColor);
+    return stringColor;
+  }
+
+  function apagaBotones(){
+    document.getElementById("verde").disabled = true;
+    document.getElementById("azul").disabled = true;
+    document.getElementById("rojo").disabled = true;
+    document.getElementById("negro").disabled = true;
+  }
+
+  function enciendeBotones(){
+    document.getElementById("verde").disabled = false;
+    document.getElementById("azul").disabled = false;
+    document.getElementById("rojo").disabled = false;
+    document.getElementById("negro").disabled = false;
+  }
+
+  function botonPulsado(colorCorrespondiente){
+    let timeFin = Date.now() - timeInit;
+    var acertar = butVar.classList[1] == colorCorrespondiente;
+    variableTiempo += "\n (" + vueltas + ") Ha tardado " + timeFin/1000 + " segundos y ¿ha acertado el color? " + acertar;
+    
+    if (vueltas >= 5){
+      // se enciende el boton de descargar y no se puede seguir el ejercicio
+      butDescarga.disabled = false;
+      butVar.disabled = true;
+      apagaBotones();
+    }else{
+      butVar.disabled = false;
+      apagaBotones();
+    }
+  }
+
+
+  // cada color tiene su propio evento
+  // quiero comprobar si estaba bien el ejercicio y guardar el timepo que ha tardado (ficheros)
+  var clickedbuttonVerde = document.getElementById("verde");
+  clickedbuttonVerde.addEventListener("click", function(){
+    botonPulsado("cverde");
+  })
+  var clickedbuttonRojo = document.getElementById("rojo");
+  clickedbuttonRojo.addEventListener("click", function(){
+    botonPulsado("crojo");
+  })
+  var clickedbuttonAzul = document.getElementById("azul");
+  clickedbuttonAzul.addEventListener("click", function(){
+    botonPulsado("cazul");
+  })
+  var clickedbuttonNegro = document.getElementById("negro");
+  clickedbuttonNegro.addEventListener("click", function(){
+    botonPulsado("cnegro");
+  })
+
+  // descargar los datos a las 5 vueltas, el ejerciico se para
+
+
+  function init(){
+      let download = document.getElementById('download');
+      download.addEventListener('click', downloadFile);
+  }
+
+  function descargaInfo(){
+      let text = variableTiempo;
+      console.log(text);
+      const a = document.createElement('a');
+      const file = new Blob([text], {type: 'text/plain'});
+      a.href = URL.createObjectURL(file);
+      a.download = 'datafromReaccion.txt';
+      a.click();
+      URL.revokeObjectURL(a.href); 
+      butVar.disabled = false;
+      variableTiempo = "";
+      vueltas = 0;
+      butDescarga.disabled = true;
+  };
+
+
+
+
+
+</script>
+
+</body>
+</html>
+
